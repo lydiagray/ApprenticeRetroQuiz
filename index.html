@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Apprentice Retrospective Quiz</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
+</head>
+<body ng-app="retroQuiz" ng-controller="retroQuizCtrl">
+    <main>
+        <img src="img/christmas-tree.jpg" width = "100" height = "80"/>
+    <div ng-show="startPage">
+        <h1>Apprentice Retrospective Quiz</h1>
+        <p>You are about to take part in the Apprentice Retro Quiz.</p>
+        <h2>Rules:</h2>
+            <div class="rules">
+            <p>No other open browser windows</p>
+            <p>No phones</p>
+            <p>No more than 3 in a team</p>
+            <p>You have 15 minutes to complete all 30 questions</p>
+        </div>
+        <br>
+        <form name="enterTeamName">Enter your team name:
+            <input class = "inputTeamName" type="text" name="teamName" ng-model="teamName" required>
+        </form><br><br>
+        <div id="missingTeamName"></div><br>
+        <button class="button right-button"  ng-click="onStartPageSubmit()" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionOne">
+        <h1>Round One - General Knowledge</h1>
+        <h2>Question 1</h2>
+        <form name="questionOne">
+            <p>Which British monarch succeeded Queen Victoria?</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">Elizabeth II<input type="radio" name="questionOneAnswer" value="1" ng-model="questionOneAnswer"><span class="checkmark"></span></label><br>
+        <label class="container">Edward VI<input type="radio" name="questionOneAnswer" value="2" ng-model="questionOneAnswer"><span class="checkmark"></span></label><br>
+        <label class="container">Edwards VII<input type="radio" name="questionOneAnswer" value="3" ng-model="questionOneAnswer"><span class="checkmark"></span></label><br><br>           
+
+        </form><br>
+        <button ng-click="onQuestionOneSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionTwo">
+        <h1>Round One - General Knowledge</h1>
+        <h2>Question 2</h2>
+        <form name="questionTwo">
+            <p>Which two states border Florida?</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">Alabama &amp; Georgia<input type="radio" name="questionTwoAnswer" value="1" ng-model="questionTwoAnswer"><span class="checkmark"></span></label><br>
+        <label class="container">Alabama &amp; Louisiana<input type="radio" name="questionTwoAnswer" value="2" ng-model="questionTwoAnswer"><span class="checkmark"></span></label><br>
+        <label class="container">Georgia &amp; Louisiana<input type="radio" name="questionTwoAnswer" value="3" ng-model="questionTwoAnswer"><span class="checkmark"></span></label><br><br>          
+        </form><br>
+        <button ng-click="onQuestionTwoPrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionTwoSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionThree">
+        <h1>Round One - General Knowledge</h1>
+        <h2>Question 3</h2>
+        <form name="questionThree">
+            <p>When did the British children's television programme Blue Peter first air?</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">1958<input type="radio" name="questionThreeAnswer" value="1" ng-model="questionThreeAnswer"><span class="checkmark"></span></label><br>
+        <label class="container">1968<input type="radio" name="questionThreeAnswer" value="2" ng-model="questionThreeAnswer"><span class="checkmark"></span></label><br>
+        <label class="container">1978<input type="radio" name="questionThreeAnswer" value="3" ng-model="questionThreeAnswer"><span class="checkmark"></span></label><br><br>           
+
+        </form><br>
+        <button ng-click="onQuestionThreePrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionThreeSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionFour">
+        <h1>Round One - General Knowledge</h1>
+        <h2>Question 4</h2>
+        <form name="questionFour">
+            <p>Who was the fourth man to walk on the moon?</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">Mr Darcy<input type="radio" name="questionFourAnswer" value="1" ng-model="questionFourAnswer"><span class="checkmark"></span></label><br>
+        <label class="container">Mr Bean<input type="radio" name="questionFourAnswer" value="2" ng-model="questionFourAnswer"><span class="checkmark"></span></label><br>
+        <label class="container">Mr Kipling<input type="radio" name="questionFourAnswer" value="3" ng-model="questionFourAnswer"><span class="checkmark"></span></label><br><br>            
+
+        </form><br>
+        <button ng-click="onQuestionFourPrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionFourSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionFive">
+        <h1>Round One - General Knowledge</h1>
+        <h2>Question 5</h2>
+        <form name="questionFive">
+            <p>Who was the fourth Doctor Who?</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">Tom Baker<input type="radio" name="questionFiveAnswer" value="1" ng-model="questionFiveAnswer"><span class="checkmark"></span></label><br>
+        <label class="container">Jon Pertwee<input type="radio" name="questionFiveAnswer" value="2" ng-model="questionFiveAnswer"><span class="checkmark"></span></label><br>
+        <label class="container">Peter Davison<input type="radio" name="questionFiveAnswer" value="3" ng-model="questionFiveAnswer"><span class="checkmark"></span></label><br><br>       
+
+        </form><br>
+        <button ng-click="onQuestionFivePrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionFiveSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionSix">
+        <h1>Round One - General Knowledge</h1>
+        <h2>Question 6</h2>
+        <form name="questionSix">
+            <p>'Socks' was the pet cat of which U.S. President?</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">Ronald Reagan<input type="radio" name="questionSixAnswer" value="1" ng-model="questionSixAnswer"><span class="checkmark"></span></label><br>
+        <label class="container">Bill Clinton<input type="radio" name="questionSixAnswer" value="2" ng-model="questionSixAnswer"><span class="checkmark"></span></label><br>
+        <label class="container">George W. Bush<input type="radio" name="questionSixAnswer" value="3" ng-model="questionSixAnswer"><span class="checkmark"></span></label><br><br>            
+
+        </form><br>
+        <button ng-click="onQuestionSixPrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionSixSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionSeven">
+        <h1>Round One - General Knowledge</h1>
+        <h2>Question 7</h2>
+        <form name="questionSeven">
+            <p>Which two spirits are found in the cocktail known as a Buttock Clencher?</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">Vodka &amp; Tequila<input type="radio" name="questionSevenAnswer" value="1" ng-model="questionSevenAnswer"><span class="checkmark"></span></label><br>
+        <label class="container">Gin &amp; Vodka<input type="radio" name="questionSevenAnswer" value="2" ng-model="questionSevenAnswer"><span class="checkmark"></span></label><br>
+        <label class="container">Tequila &amp; Gin<input type="radio" name="questionSevenAnswer" value="3" ng-model="questionSevenAnswer"><span class="checkmark"></span></label><br><br>        
+
+        </form><br>
+        <button ng-click="onQuestionSevenPrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionSevenSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionEight">
+        <h1>Round One - General Knowledge</h1>
+        <h2>Question 8</h2>
+        <form name="questionEight">
+            <p>What name was given to the powerful herbicide that the US used to clear vegetation in the Vietnam war?</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">Agent Yellow<input type="radio" name="questionEightAnswer" value="1" ng-model="questionEightAnswer"><span class="checkmark"></span></label><br>
+        <label class="container">Agent Orange<input type="radio" name="questionEightAnswer" value="2" ng-model="questionEightAnswer"><span class="checkmark"></span></label><br>
+        <label class="container">Agent Red<input type="radio" name="questionEightAnswer" value="3" ng-model="questionEightAnswer"><span class="checkmark"></span></label><br><br>             
+
+        </form><br>
+        <button ng-click="onQuestionEightPrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionEightSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionNine">
+        <h1>Round One - General Knowledge</h1>
+        <h2>Question 9</h2>
+        <form name="questionNine">
+            <p>In Morse code what letter is represented by four dots?</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">'F'<input type="radio" name="questionNineAnswer" value="1" ng-model="questionNineAnswer"><span class="checkmark"></span></label><br>
+        <label class="container">'G'<input type="radio" name="questionNineAnswer" value="2" ng-model="questionNineAnswer"><span class="checkmark"></span></label><br>
+        <label class="container">'H'<input type="radio" name="questionNineAnswer" value="3" ng-model="questionNineAnswer"><span class="checkmark"></span></label><br><br>            
+
+        </form><br>
+        <button ng-click="onQuestionNinePrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionNineSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionTen">
+        <h1>Round One - General Knowledge</h1>
+        <h2>Question 10</h2>
+        <form name="questionTen">
+            <p>Which football team in 1889 became the first to win the FA Cup and League double?</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">Preston North End<input type="radio" name="questionTenAnswer" value="1" ng-model="questionTenAnswer"><span class="checkmark"></span></label><br>
+        <label class="container">Wolverhampton Wanderers<input type="radio" name="questionTenAnswer" value="2" ng-model="questionTenAnswer"><span class="checkmark"></span></label><br>
+        <label class="container">Blackburn Rovers<input type="radio" name="questionTenAnswer" value="3" ng-model="questionTenAnswer"><span class="checkmark"></span></label><br><br>         
+
+        </form><br>
+        <button ng-click="onQuestionTenPrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionTenSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionEleven">
+        <h1>Round Two - Song Lyrics</h1>
+        <h2>Question 11</h2>
+        <p>Select the correct song and band for the song lyrics</p>
+        <form name="questionEleven">
+            <p>‘With the lights out, it’s less dangerous. Here we are now, entertain us.’</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">Nirvana ~ Polly<input type="radio" name="questionElevenAnswer" ng-model="questionElevenAnswer" value="1" ><span class="checkmark"></span></label><br>
+        <label class="container">Nirvana ~ Smells Like Teen Spirit<input type="radio" name="questionElevenAnswer"  ng-model="questionElevenAnswer" value="2"><span class="checkmark"></span></label><br>
+        <label class="container">Nirvana ~ In Bloom<input type="radio" name="questionElevenAnswer"  ng-model="questionElevenAnswer" value="3"><span class="checkmark"></span></label><br><br>
+
+        </form><br>
+        <button ng-click="onQuestionElevenPrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionElevenSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionTwelve">
+        <h1>Round Two - Song Lyrics</h1>
+        <h2>Question 12</h2>
+        <p>Select the correct song and band for the song lyrics</p>
+        <form name="questionTwelve">
+            <p>‘You must understand though, the touch of your hand makes my pulse react.’</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">Tina Turner ~ What's Love Got To Do With It<input type="radio" name="questionTwelveAnswer" ng-model="questionTwelveAnswer" value="1" ><span class="checkmark"></span></label><br>
+        <label class="container">Tina Turner ~ River Deep Mountain High<input type="radio" name="questionTwelveAnswer" ng-model="questionTwelveAnswer" value="2"><span class="checkmark"></span></label><br>
+        <label class="container">Tina Turner ~ The Best<input type="radio" name="questionTwelveAnswer" ng-model="questionTwelveAnswer" value="3"><span class="checkmark"></span></label><br><br>           
+
+        </form><br>
+        <button ng-click="onQuestionTwelvePrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionTwelveSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionThirteen">
+        <h1>Round Two - Song Lyrics</h1>
+        <h2>Question 13</h2>
+        <p>Select the correct song and band for the song lyrics</p>
+        <form name="questionThirteen">
+            <p>‘No clouds in my storms, let it rain, I hydroplane into fame.’</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">Rhianna ~ Disturbia<input type="radio" name="questionThirteenAnswer" ng-model="questionThirteenAnswer" value="1" ><span class="checkmark"></span></label><br>
+        <label class="container">Rhianna ~ Umbrella<input type="radio" name="questionThirteenAnswer" ng-model="questionThirteenAnswer" value="2"><span class="checkmark"></span></label><br>
+        <label class="container">Rhianna ~ S&amp;M<input type="radio" name="questionThirteenAnswer" ng-model="questionThirteenAnswer" value="3"><span class="checkmark"></span></label><br><br>            
+
+        </form><br>
+        <button ng-click="onQuestionThirteenPrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionThirteenSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionFourteen">
+        <h1>Round Two - Song Lyrics</h1>
+        <h2>Question 14</h2>
+        <p>Select the correct song and band for the song lyrics</p>
+        <form name="questionFourteen">
+            <p>‘I’m in California dreaming about who we used to be. When we were younger and free, I’ve forgotten how it felt before the world fell at our feet’</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">Adele ~ Make You Feel My Love<input type="radio" name="questionFourteenAnswer" ng-model="questionFourteenAnswer" value="1" ><span class="checkmark"></span></label><br>
+        <label class="container">Adele ~ Someone Like You<input type="radio" name="questionFourteenAnswer" ng-model="questionFourteenAnswer" value="2"><span class="checkmark"></span></label><br>
+        <label class="container">Adele ~ Hello<input type="radio" name="questionFourteenAnswer" ng-model="questionFourteenAnswer" value="3"><span class="checkmark"></span></label><br><br>  
+
+        </form><br>
+        <button ng-click="onQuestionFourteenPrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionFourteenSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionFifteen">
+        <h1>Round Two - Song Lyrics</h1>
+        <h2>Question 15</h2>
+        <p>Select the correct song and band for the song lyrics</p>
+        <form name="questionFifteen">
+            <p>‘Living easy, living free, season ticket on a one-way ride.’</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">AC/DC ~ Highway To Hell<input type="radio" name="questionFifteenAnswer" ng-model="questionFifteenAnswer" value="1" ><span class="checkmark"></span></label><br>
+        <label class="container">AC/DC ~ Thunderstruck<input type="radio" name="questionFifteenAnswer" ng-model="questionFifteenAnswer" value="2"><span class="checkmark"></span></label><br>
+        <label class="container">AC/DC ~ Dirty Deeds Done Dirt Cheap<input type="radio" name="questionFifteenAnswer" ng-model="questionFifteenAnswer" value="3"><span class="checkmark"></span></label><br><br>             
+
+        </form><br>
+        <button ng-click="onQuestionFifteenPrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionFifteenSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionSixteen">
+        <h1>Round Two - Song Lyrics</h1>
+        <h2>Question 16</h2>
+        <p>Select the correct song and band for the song lyrics</p>
+        <form name="questionSixteen">
+            <p>‘I got this feeling inside my bones, It goes electric, wavey when I turn it on.’</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">Justin Timberlake ~ Like I Love You<input type="radio" name="questionSixteenAnswer" ng-model="questionSixteenAnswer" value="1" ><span class="checkmark"></span></label><br>
+        <label class="container">Justin Timberlake ~ SexyBack<input type="radio" name="questionSixteenAnswer" ng-model="questionSixteenAnswer" value="2"><span class="checkmark"></span></label><br>
+        <label class="container">Justin Timberlake ~ Can't Stop The Feeling<input type="radio" name="questionSixteenAnswer" ng-model="questionSixteenAnswer" value="3"><span class="checkmark"></span></label><br><br>          
+
+        </form><br>
+        <button ng-click="onQuestionSixteenPrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionSixteenSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionSeventeen">
+        <h1>Round Two - Song Lyrics</h1>
+        <h2>Question 17</h2>
+        <p>Select the correct song and band for the song lyrics</p>
+        <form name="questionSeventeen">
+            <p>‘Scare myself to death, That’s why I keep on running; Before I’ve arrived, I can see myself coming’</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">Robbie Williams ~ Angels<input type="radio" name="questionSeventeenAnswer" ng-model="questionSeventeenAnswer" value="1" ><span class="checkmark"></span></label><br>
+        <label class="container">Robbie Williams ~ Feel<input type="radio" name="questionSeventeenAnswer" ng-model="questionSeventeenAnswer" value="2"><span class="checkmark"></span></label><br>
+        <label class="container">Robbie Williams ~ She's The One<input type="radio" name="questionSeventeenAnswer" ng-model="questionSeventeenAnswer" value="3"><span class="checkmark"></span></label><br><br>          
+
+        </form><br>
+        <button ng-click="onQuestionSeventeenPrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionSeventeenSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionEighteen">
+        <h1>Round Two - Song Lyrics</h1>
+        <h2>Question 18</h2>
+        <p>Select the correct song and band for the song lyrics</p>
+        <form name="questionEighteen">
+            <p>‘This love has taken its toll on me; She said goodbye too many times before’</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">Maroon 5 ~ She Will Be Loved<input type="radio" name="questionEighteenAnswer" ng-model="questionEighteenAnswer" value="1" ><span class="checkmark"></span></label><br>
+        <label class="container">Maroon 5 ~ This Love<input type="radio" name="questionEighteenAnswer" ng-model="questionEighteenAnswer" value="2"><span class="checkmark"></span></label><br>
+        <label class="container">Maroon 5 ~ What Lovers Do<input type="radio" name="questionEighteenAnswer" ng-model="questionEighteenAnswer" value="3"><span class="checkmark"></span></label><br><br>           
+
+        </form><br>
+        <button ng-click="onQuestionEighteenPrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionEighteenSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionNineteen">
+        <h1>Round Two - Song Lyrics</h1>
+        <h2>Question 19</h2>
+        <p>Select the correct song and band for the song lyrics</p>
+        <form name="questionNineteen">
+            <p>‘I’m never gonna dance again, Guilty feet have got no rhythm’</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">George Michael ~ Careless Whisper<input type="radio" name="questionNineteenAnswer" ng-model="questionNineteenAnswer" value="1" ><span class="checkmark"></span></label><br>
+        <label class="container">George Michael ~ Fastlove<input type="radio" name="questionNineteenAnswer" ng-model="questionNineteenAnswer" value="2"><span class="checkmark"></span></label><br>
+        <label class="container">George Michael ~ Faith<input type="radio" name="questionNineteenAnswer" ng-model="questionNineteenAnswer" value="3"><span class="checkmark"></span></label><br><br>             
+
+        </form><br>
+        <button ng-click="onQuestionNineteenPrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionNineteenSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionTwenty">
+        <h1>Round Two - Song Lyrics</h1>
+        <h2>Question 20</h2>
+        <p>Select the correct song and band for the song lyrics</p>
+        <form name="questionTwenty">
+            <p>‘No New Year’s Day to celebrate, No chocolate covered candy hearts to give away’</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">Stevie Wonder ~ Signed, Sealed, Delivered<input type="radio" name="questionTwentyAnswer" ng-model="questionTwentyAnswer" value="1" ><span class="checkmark"></span></label><br>
+        <label class="container">Stevie Wonder ~ Isn't She Lovely<input type="radio" name="questionTwentyAnswer" ng-model="questionTwentyAnswer" value="2"><span class="checkmark"></span></label><br>
+        <label class="container">Stevie Wonder ~ I Just Called To Say I Love You<input type="radio" name="questionTwentyAnswer" ng-model="questionTwentyAnswer" value="3"><span class="checkmark"></span></label><br><br>          
+
+        </form><br>
+        <button ng-click="onQuestionTwentyPrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionTwentySubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionTwentyone">
+        <h1>Round Three - Christmas Trivia</h1>
+        <h2>Question 21</h2>
+        <form name="questionTwentyone">
+            <p>It is traditional to decorate an evergreen tree at Christmas time. In which country is it believed that this tradition began?</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">Germany<input type="radio" name="questionTwentyoneAnswer" ng-model="questionTwentyoneAnswer" value="1" ><span class="checkmark"></span></label><br>
+        <label class="container">France<input type="radio" name="questionTwentyoneAnswer" ng-model="questionTwentyoneAnswer" value="2"><span class="checkmark"></span></label><br>
+        <label class="container">Poland<input type="radio" name="questionTwentyoneAnswer" ng-model="questionTwentyoneAnswer" value="3"><span class="checkmark"></span></label><br><br>      
+
+        </form><br>
+        <button ng-click="onQuestionTwentyonePrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionTwentyoneSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionTwentytwo">
+        <h1>Round Three - Christmas Trivia</h1>
+        <h2>Question 22</h2>
+        <form name="questionTwentytwo">
+            <p>Which country gives the gift of a huge Christmas tree to the UK every year which is then displayed in Trafalgar Square?</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">Denmark<input type="radio" name="questionTwentytwoAnswer" ng-model="questionTwentytwoAnswer" value="1" ><span class="checkmark"></span></label><br>
+        <label class="container">Sweden<input type="radio" name="questionTwentytwoAnswer" ng-model="questionTwentytwoAnswer" value="2"><span class="checkmark"></span></label><br>
+        <label class="container">Norway<input type="radio" name="questionTwentytwoAnswer" ng-model="questionTwentytwoAnswer" value="3"><span class="checkmark"></span></label><br><br>       
+
+        </form><br>
+        <button ng-click="onQuestionTwentytwoPrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionTwentytwoSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionTwentythree">
+        <h1>Round Three - Christmas Trivia</h1>
+        <h2>Question 23</h2>
+        <form name="questionTwentythree">
+            <p>In the original version of the song 'Rudolph the Red Nosed Reindeer', how many times does the word 'Rudolph' appear (excluding the title)?</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">4<input type="radio" name="questionTwentythreeAnswer" ng-model="questionTwentythreeAnswer" value="1" ><span class="checkmark"></span></label><br>
+        <label class="container">14<input type="radio" name="questionTwentythreeAnswer" ng-model="questionTwentythreeAnswer" value="2"><span class="checkmark"></span></label><br>
+        <label class="container">40<input type="radio" name="questionTwentythreeAnswer" ng-model="questionTwentythreeAnswer" value="3"><span class="checkmark"></span></label><br><br>       
+
+        </form><br>
+        <button ng-click="onQuestionTwentythreePrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionTwentythreeSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionTwentyfour">
+        <h1>Round Three - Christmas Trivia</h1>
+        <h2>Question 24</h2>
+        <form name="questionTwentyfour">
+            <p>Which famous Christmas song is officially the best-selling Christmas single of all time?</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">Frosty The Snowman<input type="radio" name="questionTwentyfourAnswer" ng-model="questionTwentyfourAnswer" value="1" ><span class="checkmark"></span></label><br>
+        <label class="container">White Christmas<input type="radio" name="questionTwentyfourAnswer" ng-model="questionTwentyfourAnswer" value="2"><span class="checkmark"></span></label><br>
+        <label class="container">Do They Know It's Christmas (Band Aid)<input type="radio" name="questionTwentyfourAnswer" ng-model="questionTwentyfourAnswer" value="3"><span class="checkmark"></span></label><br><br>           
+
+        </form><br>
+        <button ng-click="onQuestionTwentyfourPrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionTwentyfourSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionTwentyfive">
+        <h1>Round Three - Christmas Trivia</h1>
+        <h2>Question 25</h2>
+        <form name="questionTwentyfive">
+            <p>What fruit is used to make a traditional Christingle?</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">An apple<input type="radio" name="questionTwentyfiveAnswer" ng-model="questionTwentyfiveAnswer" value="1" ><span class="checkmark"></span></label><br>
+        <label class="container">An orange<input type="radio" name="questionTwentyfiveAnswer" ng-model="questionTwentyfiveAnswer" value="2"><span class="checkmark"></span></label><br>
+        <label class="container">A grapefruit<input type="radio" name="questionTwentyfiveAnswer" ng-model="questionTwentyfiveAnswer" value="3"><span class="checkmark"></span></label><br><br>           
+
+        </form><br>
+        <button ng-click="onQuestionTwentyfivePrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionTwentyfiveSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionTwentysix">
+        <h1>Round Three - Christmas Trivia</h1>
+        <h2>Question 26</h2>
+        <form name="questionTwentysix">
+            <p>In which year was the festive favourite 'Home Alone' first released in cinemas?</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">1990<input type="radio" name="questionTwentysixAnswer" ng-model="questionTwentysixAnswer" value="1" ><span class="checkmark"></span></label><br>
+        <label class="container">1992<input type="radio" name="questionTwentysixAnswer" ng-model="questionTwentysixAnswer" value="2"><span class="checkmark"></span></label><br>
+        <label class="container">1994<input type="radio" name="questionTwentysixAnswer" ng-model="questionTwentysixAnswer" value="3"><span class="checkmark"></span></label><br><br>         
+
+        </form><br>
+        <button ng-click="onQuestionTwentysixPrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionTwentysixSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionTwentyseven">
+        <h1>Round Three - Christmas Trivia</h1>
+        <h2>Question 27</h2>
+        <form name="questionTwentyseven">
+            <p>Between 1647 and 1660, Christmas celebrations were banned in England by Parlimentary law. Which famous figure in English history is associated with 
+               this ban?</p><br>
+        Select your answer:
+        <br><br>
+        <label class="container">King Charles I<input type="radio" name="questionTwentysevenAnswer" ng-model="questionTwentysevenAnswer" value="1" ><span class="checkmark"></span></label><br>
+        <label class="container">Sir Richard Grenville<input type="radio" name="questionTwentysevenAnswer" ng-model="questionTwentysevenAnswer" value="2"><span class="checkmark"></span></label><br>
+        <label class="container">Oliver Cromwell<input type="radio" name="questionTwentysevenAnswer" ng-model="questionTwentysevenAnswer" value="3"><span class="checkmark"></span></label><br><br>             
+
+        </form><br>
+        <button ng-click="onQuestionTwentysevenPrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+        <button ng-click="onQuestionTwentysevenSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionTwentyeight">
+            <h1>Round Three - Christmas Trivia</h1>
+            <h2>Question 28</h2>
+            <form name="questionTwentyeight">
+                <p>What did Londoner Tom Smith invent in 1847 that is still commonly used at Christmas time?</p><br>
+            Select your answer:
+            <br><br>
+            <label class="container">Christmas Lights<input type="radio" name="questionTwentyeightAnswer" ng-model="questionTwentyeightAnswer" value="1" ><span class="checkmark"></span></label><br>
+            <label class="container">Mince Pies<input type="radio" name="questionTwentyeightAnswer" ng-model="questionTwentyeightAnswer" value="2"><span class="checkmark"></span></label><br>
+            <label class="container">Christmas Crackers<input type="radio" name="questionTwentyeightAnswer" ng-model="questionTwentyeightAnswer" value="3"><span class="checkmark"></span></label><br><br>            
+    
+            </form><br>
+            <button ng-click="onQuestionTwentyeightPrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+            <button ng-click="onQuestionTwentyeightSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionTwentynine">
+            <h1>Round Three - Christmas Trivia</h1>
+            <h2>Question 29</h2>
+            <form name="questionTwentynine">
+                <p>Which Saint's Holy Day is on Boxing Day (26th December)?</p><br>
+            Select your answer:
+            <br><br>
+            <label class="container">St Peter<input type="radio" name="questionTwentynineAnswer" ng-model="questionTwentynineAnswer" value="1" ><span class="checkmark"></span></label><br>
+            <label class="container">St Stephen<input type="radio" name="questionTwentynineAnswer" ng-model="questionTwentynineAnswer" value="2"><span class="checkmark"></span></label><br>
+            <label class="container">St George<input type="radio" name="questionTwentynineAnswer" ng-model="questionTwentynineAnswer" value="3"><span class="checkmark"></span></label><br><br>          
+    
+            </form><br>
+            <button ng-click="onQuestionTwentyninePrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+            <button ng-click="onQuestionTwentynineSubmit()" class="button right-button" style="vertical-align:middle"><span>Next </span></button>
+    </div>
+
+    <div ng-show="showQuestionThirty">
+            <h1>Round Three - Christmas Trivia</h1>
+            <h2>Question 30</h2>
+            <form name="questionThiry">
+                <p>As well as being the Patron Saint of children, Saint Nicholas is also the Patron Saint of which other group?</p><br>
+            Select your answer:
+            <br><br>
+            <label class="container">Sailors<input type="radio" name="questionThirtyAnswer" ng-model="questionThirtyAnswer" value="1" ><span class="checkmark"></span></label><br>
+            <label class="container">Archers<input type="radio" name="questionThirtyAnswer" ng-model="questionThirtyAnswer" value="2"><span class="checkmark"></span></label><br>
+            <label class="container">Soldiers<input type="radio" name="questionThirtyAnswer" ng-model="questionThirtyAnswer" value="3"><span class="checkmark"></span></label><br><br>        
+           
+            </form><br>
+            <button ng-click="onQuestionThirtyPrevious()" class="button left-button" style="vertical-align:middle"><span>Previous </span></button>
+            <button ng-click="onQuestionThirtySubmit()" class="button right-button" style="vertical-align:middle"><span>Submit </span></button>
+    </div>
+
+    <div ng-show="end">
+        <h1>Congratulations</h1>
+        <br>
+            <div class="end-score">
+                    <p><div id="teamName"></div></p>
+                    <p>You scored</p>
+                    <div id="finalScore"></div>
+                    <p>out of 30!!</p>
+            </div>
+            <button class="button right-button button-answers" style="vertical-align:middle"><span><a href="answers.html">See the answers</a></span></button>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.js"></script>
+    <script src="quizAngular.js"></script>
+</main>
+</body>
+  
+</html>
